@@ -23,7 +23,7 @@ export const getPosts = async () => {
                     featuredImage {
                         url
                     }
-                    catagories {
+                    categories {
                         name
                         slug
                     }
@@ -61,6 +61,25 @@ export const getRecentPosts = async () => {
 };
 
 
+ export const getCategories = async () => {
+    const query = gql `
+      query GetCategories {
+          categories {
+            name
+            slug
+          }
+      }
+    `;
+  
+
+
+    const result = await request(graphqlAPI, query);
+  
+    return result.categories;
+  };
+  
+
+
 export const getSimilarPosts = async (categories, slug) => {
     const query = gql `
         query GetPostDetails($slug: String!, $categories: [String!]) {
@@ -82,3 +101,4 @@ export const getSimilarPosts = async (categories, slug) => {
 
     return result.posts;
 };
+
