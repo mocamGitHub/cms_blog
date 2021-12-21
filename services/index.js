@@ -19,7 +19,7 @@ export const getPosts = async () => {
                     createdAt
                     slug
                     title
-                    exerpt
+                    excerpt
                     featuredImage {
                         url
                     }
